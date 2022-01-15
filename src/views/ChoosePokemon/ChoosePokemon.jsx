@@ -10,6 +10,7 @@ const ChoosePokemon = () => {
   const isInDropArea = useRef(false);
 
   const pokemonsIdList = [1, 4, 7];
+  const [pokemonsRef, setPokemonsRef] = useState();
   const [pokemons, setPokemons] = useState();
   const [selectedPokemon, setSelectedPokemon] = useState();
 
@@ -22,12 +23,29 @@ const ChoosePokemon = () => {
     return pokemonList;
   };
 
+  const clearSelection = () => {
+    setSelectedPokemon([]);
+    setPokemons(pokemonsRef);
+  };
+
+  useEffect(() => {
+    getPokemons().then((e) => {
+      setPokemons(e);
+      setPokemonsRef(e);
+    });
+  }, []);
+
   const dragStart = (e) => {
     dragItem.current = e;
   };
 
   const drop = (e) => {
     if (isInDropArea.current) setSelectedPokemon([dragItem.current]);
+    setPokemons(() =>
+      pokemonsRef.filter(
+        (pokemon) => pokemon.data.name !== dragItem.current.data.name
+      )
+    );
     isInDropArea.current = false;
   };
 
@@ -35,20 +53,10 @@ const ChoosePokemon = () => {
     isInDropArea.current = true;
   };
 
-  const clearSelection = () => {
-    setSelectedPokemon([]);
-  };
-
-  useEffect(() => {
-    getPokemons().then((e) => {
-      setPokemons(e);
-    });
-  });
-
   return (
     <div className="Choose-pokemon">
       <button className="nav-button" onClick={() => history.push("/")}>
-        Back to pokemon List
+        Back to pokemon list
       </button>
       <div className="selection-area">
         <div className="area pick-area">
