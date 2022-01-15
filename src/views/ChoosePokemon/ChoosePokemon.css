@@ -1,0 +1,49 @@
+.Choose-pokemon {
+  text-align: center;
+}
+
+.draggable-pokemon {
+  display: inline;
+}
+
+.selection-area {
+  padding: 4vmin;
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: auto auto;
+}
+
+@media (max-width: 800px) {
+  .selection-area {
+    grid-template-columns: auto;
+  }
+}
+
+.area {
+  padding: 2vmin;
+  min-width: 30vmin;
+  min-height: 10vmin;
+  margin: 2vmin;
+  background-color: #fbeec1;
+  border-radius: 1vmin;
+}
+
+.clear-selection-button {
+  cursor: pointer;
+  border: none;
+  background-color: #fbeec1;
+  color: blue;
+  text-decoration: underline blue;
+}
+
+.nav-button {
+  padding: 20px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #a15941;
+  color: white;
+  font-size: 20px;
+}

@@ -1,0 +1,36 @@
+.Home {
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vmin;
+  width: 30vmin;
+}
+
+.Home-header {
+  padding: 10px;
+  margin-bottom: 2vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.nav-div {
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+}
+
+.nav-button {
+  padding: 20px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #a15941;
+  color: white;
+  font-size: 20px;
+}
