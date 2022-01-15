@@ -40,12 +40,14 @@ const ChoosePokemon = () => {
   };
 
   const drop = (e) => {
-    if (isInDropArea.current) setSelectedPokemon([dragItem.current]);
-    setPokemons(() =>
-      pokemonsRef.filter(
-        (pokemon) => pokemon.data.name !== dragItem.current.data.name
-      )
-    );
+    if (isInDropArea.current) {
+      setSelectedPokemon([dragItem.current]);
+      setPokemons(() =>
+        pokemonsRef.filter(
+          (pokemon) => pokemon.data.name !== dragItem.current.data.name
+        )
+      );
+    }
     isInDropArea.current = false;
   };
 
@@ -63,19 +65,19 @@ const ChoosePokemon = () => {
           <div>Pickup your pokemon</div>
           {pokemons
             ? pokemons.map((pokemon) => (
-                <div
-                  className={"draggable-pokemon"}
-                  key={pokemon.data.name}
-                  draggable
-                  onDragStart={(e) => dragStart(pokemon)}
-                  onDragEnd={(e) => drop()}
-                >
-                  <Pokemon
-                    img={pokemon.data.sprites.front_default}
-                    name={pokemon.data.name}
-                  />
-                </div>
-              ))
+              <div
+                className={"draggable-pokemon"}
+                key={pokemon.data.name}
+                draggable
+                onDragStart={(e) => dragStart(pokemon)}
+                onDragEnd={(e) => drop()}
+              >
+                <Pokemon
+                  img={pokemon.data.sprites.front_default}
+                  name={pokemon.data.name}
+                />
+              </div>
+            ))
             : null}
         </div>
         <div
@@ -98,17 +100,17 @@ const ChoosePokemon = () => {
           </div>
           {selectedPokemon
             ? selectedPokemon.map((e) => (
-                <div
-                  key={e.data.name}
-                  className="selected-pokemon"
-                  onDoubleClick={() => clearSelection()}
-                >
-                  <Pokemon
-                    img={e.data.sprites.front_default}
-                    name={e.data.name}
-                  />
-                </div>
-              ))
+              <div
+                key={e.data.name}
+                className="selected-pokemon"
+                onDoubleClick={() => clearSelection()}
+              >
+                <Pokemon
+                  img={e.data.sprites.front_default}
+                  name={e.data.name}
+                />
+              </div>
+            ))
             : null}
         </div>
       </div>
